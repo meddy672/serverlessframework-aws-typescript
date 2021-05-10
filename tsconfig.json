@@ -11,8 +11,7 @@
       "outDir": "lib"
     },
     "include":[
-      "src/*"
-  , "src/functions/handler.ts"  
+   "src/lambda/http/*"  
   ],
     "exclude": [
       "node_modules"

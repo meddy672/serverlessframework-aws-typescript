@@ -6,9 +6,6 @@ This repository is a basic setup for a TypeScript serverless launch on the AWS p
 2. [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html)
 3. [Serverless CLI](https://www.serverless.com/framework/docs/getting-started/)
 
-### Inportant Files/Folders
-1. *serverless.yml* - Configuration file for serverless deployment
-2. *functions/handlers.ts* - Your lambda functions that will handle your request
 
 ### How To Use 
 1. Download or clone the repository

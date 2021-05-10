@@ -29,6 +29,20 @@ functions:
           path: groups
           cors: true
 
+  CreateGroup:
+    handler: src/lambda/http/createGroup.handler
+    events:
+      - http:
+          method: post
+          path: groups
+          cors: true
+          reqValidatorName: RequestBodyValidator
+          documentation:
+            summary: Create a new group
+            description: Create a new group
+            requestModels:
+              'application/json': GroupRequest
+
 resources:
   Resources:
     GroupsDynamoDBTable:

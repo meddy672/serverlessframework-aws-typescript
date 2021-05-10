@@ -6,7 +6,7 @@ import * as  uuid from  'uuid';
 const docClient = new AWS.DynamoDB.DocumentClient();
 const groupsTable = process.env.GROUPS_TABLE;
 
-export const createGroup: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) : Promise <APIGatewayProxyResult> => {
+export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEvent) : Promise <APIGatewayProxyResult> => {
     console.log('Processing event:', event);
     const itemId = uuid.v4();
 

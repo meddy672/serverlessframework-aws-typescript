@@ -8,6 +8,12 @@ provider:
   name: aws
   runtime: nodejs10.x
 
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+
+  environment:
+    GROUPS_TABLE: Groups-${self:provider.stage}
+
 functions:
   GetGroups:
    handler: src/lambda/http/getGroups.handler

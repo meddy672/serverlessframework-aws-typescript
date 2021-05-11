@@ -44,6 +44,7 @@ export const handler: APIGatewayProxyHandler = async (event: APIGatewayProxyEven
     },
     body: JSON.stringify({
       newItem: newItem,
+      uploadUrl: url
     })
   }
 }
@@ -89,6 +90,6 @@ function getUploadUrl(imageId: string) {
   return s3.getSignedUrl('putObject', {
     Bucket: bucketName,
     Key: imageId,
-    Expires: urlExpiration
+    Expires: parseInt(urlExpiration, 10)
   })
 }

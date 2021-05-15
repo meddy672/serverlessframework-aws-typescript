@@ -139,6 +139,13 @@ functions:
       - websocket:
           route: $disconnect
 
+  SyncWithElasticsearch:
+    handler: src/lambda/dynamodb/elasticSearchSync.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !GetAtt ImagesDynamoDBTable.StreamArn
+
 resources:
   Resources:
     GroupsDynamoDBTable:
@@ -176,6 +183,8 @@ resources:
             Projection:
               ProjectionType: ALL            
         BillingMode: PAY_PER_REQUEST
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
         TableName: ${self:provider.environment.IMAGES_TABLE}
 
     WebSocketConnectionsDynamoDBTable:
@@ -206,7 +215,7 @@ resources:
       Properties:
         DisplayName: Image bucket topic
         TopicName: ${self:custom.topicName} 
-        
+
     SNSTopicPolicy:
       Type: AWS::SNS::TopicPolicy
       Properties:
